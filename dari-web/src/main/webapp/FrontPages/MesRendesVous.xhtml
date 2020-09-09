@@ -1,0 +1,86 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	template="/template/template.xhtml">
+	<ui:define name="content">
+<section class="blog-section latest-blog spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>List Rendez Vous</span>
+                    <h2>Liste Rendez Vous</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th>
+                           Nom Annonce
+                        </th>
+                       
+                        <th>
+                            date
+                        </th>
+                        <th>
+                            state
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+<tbody>
+                    <ui:repeat var="rdv" value="#{MesRendezVousBean.list}">
+                        <tr>
+                            <td>
+                                #{rdv.annonce.description}
+                            </td>
+                            <td>
+                                #{rdv.date}
+                            </td>
+                            <td>
+                                 #{rdv.state}
+                            </td>
+                            <td>
+                            	<h:form>
+	                           		<h:commandLink value = "Accept" action = "#{MesRendezVousBean.acceptRDV(rdv)}" rendered="#{rdv.state eq 'demand'}" ></h:commandLink>
+	                            </h:form>
+	                            <h:form>
+	                           		<h:commandLink value = "Refus RDV" action = "#{MesRendezVousBean.refusRDV(rdv)}" rendered="#{rdv.state eq 'demand'}" ></h:commandLink>
+	                            </h:form>
+	                            <h:form>
+	                           		 <h:commandLink value = "Cancel RDV" action = "#{MesRendezVousBean.cancelRDV(rdv)}" rendered="#{rdv.state eq 'accepted'}" ></h:commandLink>
+                            	</h:form>
+						
+							</td>
+                        </tr>
+                    </ui:repeat>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        </div>
+</section>
+	</ui:define>
+	<ui:define name="javascripts">
+	<script src="../resources/plugins/datatables/jquery.dataTables.js"></script>
+    <script src="../resources/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+    <!-- page script -->
+    <script>
+                        $(function () {
+                            $('#example1').DataTable({
+                                "paging": true,
+                                "lengthChange": true,
+                                "searching": true,
+                                "ordering": true,
+                                "info": true,
+                                "autoWidth": true,
+                            });
+                        });
+    </script>
+	</ui:define>
+</ui:composition>

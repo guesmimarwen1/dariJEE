@@ -1,0 +1,19 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core" 	
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets" 	
+	template="/template/template.xhtml">
+	<ui:define name="content">
+			<h:form id="form">
+				<b>Connexion</b>
+				<h:panelGrid columns="2">
+					<h:outputText value="Login" />
+					<h:inputText value="#{loginBean.email}" />
+					<h:outputText value="Mot de passe" />
+					<h:inputText value="#{loginBean.password}" />
+					<h:commandButton id="btn" value="Connexion" action="#{loginBean.doLogin}" />
+					<h:message for="btn"/>
+				</h:panelGrid>
+			</h:form>
+	</ui:define>
+</ui:composition>
