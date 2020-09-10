@@ -19,6 +19,13 @@ here just a complement to inform that this code was containarized with docker on
 ## My Contact 
 you can contact me by creating an issue under this repo or just tap the contribution button and wow you get my contact ;
 
+
 ## Algorithms
 See my dotnet work under the github repo .
 This is my project for Integrated Project at ESPRIT
+
+
+## To run docker Container 
+you have first to validate if docker desktop is on
+then open windows CMD and run : 
+docker run -p 5200:9080 -it --rm marwenguesmi/cheers2019
